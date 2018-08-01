@@ -1,4 +1,3 @@
-require 'csv'
 require 'sqlite3'
 require 'grape'
 require 'json'

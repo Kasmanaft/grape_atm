@@ -13,6 +13,6 @@ end
 
 # This is for checking to see that each endpoint page has the correct information on it
 Capybara.configure do |config|
-  config.app = AtmApi::Atm.new
+  config.app = Atm.new
   config.server_port = 9293
 end
