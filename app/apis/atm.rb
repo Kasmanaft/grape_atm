@@ -7,17 +7,17 @@ class Atm < Grape::API
   resource :atm do
     desc 'Get atm leftovers'
     get '/' do
-      User.sorted_by_first_name.to_json
+      nil
     end
 
     desc 'Withdraw cash'
     post '/' do
-      User.sorted_by_created_at.to_json
+      nil
     end
 
     desc 'Reload cash'
     put '/' do
-      User.sorted_by_last_name.to_json
+      nil
     end
   end
 end
