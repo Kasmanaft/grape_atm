@@ -11,7 +11,7 @@ Feature: State should return amounts of every bill left in ATM
   Scenario: It return correct amounts
     When I send a GET request to "/v1/atm"
     Then the response status should be "200"
-    And the JSON response should have such keys and values:
+    And the JSON response should have such nominals and amounts:
       | 1  | 0      |
       | 2  | 3      |
       | 5  | 35     |
