@@ -1,9 +1,17 @@
+# System Requirements
+
+* ruby 2.0+
+* sqlite3
+
+# Installation
+
+* `bundle install`
+* `rake db:migrate db:seed`
+* `RACK_ENV=test rake db:migrate db:seed`
+* `rspec spec`
+* `cucumber`
+
 #Instructions
-
-- Run the following commands to get started
-
-1. rake db:create
-4. rackup
 
 - You can then visit the api at the following endpoints
 

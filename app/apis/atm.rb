@@ -7,7 +7,7 @@ class Atm < Grape::API
   resource :atm do
     desc 'Get atm leftovers'
     get '/' do
-      nil
+      Bill.all.as_json
     end
 
     desc 'Withdraw cash'

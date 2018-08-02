@@ -1,0 +1,7 @@
+development:
+  adapter: sqlite3
+  database: atm_development.db
+
+test:
+  adapter: sqlite3
+  database: atm_test.db
