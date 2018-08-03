@@ -48,7 +48,7 @@ Feature: Cash reloaded into ATM
       """
     And I send a PUT request to "/atm"
     Then the response status should be "400"
-    And the JSON response should contain an error
+    And the JSON response should contain an error "bills[nominal] does not have a valid value"
 
     Then I send a GET request to "/atm"
     And the response status should be "200"

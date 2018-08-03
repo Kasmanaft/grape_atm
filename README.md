@@ -8,8 +8,8 @@
 * `bundle install`
 * `rake db:migrate db:seed`
 * `RACK_ENV=test rake db:migrate db:seed`
-* `rspec spec`
-* `cucumber`
+* `rspec`
+* `cucumber --order random`
 
 #Instructions
 

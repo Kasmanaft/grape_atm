@@ -11,8 +11,10 @@ class Atm < Grape::API
 
     desc 'Reload cash'
     params do
+      require_relative '../models/bill.rb' # uninitialized constant Bill (NameError) otherwise
       requires :bills, type: Array[JSON] do
-        requires :nominal, type: Integer, desc: 'Bill Nominal', values: [1, 2, 5, 10, 25, 50]
+        requires :nominal, type: Integer, desc: 'Bill Nominal',
+                           values: Bill::AVAILABLE_NOMINALS
         requires :amount, type: Integer, desc: 'Amount of Bills'
       end
     end
@@ -23,10 +25,12 @@ class Atm < Grape::API
 
     desc 'Withdraw cash'
     params do
-      requires :amount, type: Integer, desc: 'Amount of Bills'
+      requires :amount, type: Integer, desc: 'Cash Amount', except_values: [0]
     end
     post '/' do
-      Bill.withdraw params[:amount]
+      result = Bill.withdraw params[:amount]
+      status 400 unless result.is_a?(Array) # Error will be returned in hash
+      result
     end
   end
 end

@@ -33,6 +33,7 @@ Then('the JSON response should be ok') do
   expect(page.body).to eq('{"status":"Ok"}')
 end
 
-Then('the JSON response should contain an error') do
-  expect(page.body).to eq('{"error":"bills[nominal] does not have a valid value"}')
+Then('the JSON response should contain an error {string}') do |expected_error|
+  parsed_body = JSON.parse(page.body)
+  expect(parsed_body['error']).to eq(expected_error)
 end
