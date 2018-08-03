@@ -6,7 +6,7 @@ Then(/^the response status should be "(\d+)"$/) do |status_code|
   expect(page.status_code).to eq(status_code)
 end
 
-Given('ATM reloaded with such bills:') do |bills|
+Given('ATM has such bills:') do |bills|
   bills.rows_hash.each do |bill, amount|
     Bill.find(bill).update_attribute :amount, amount
   end
@@ -19,4 +19,20 @@ Then('the JSON response should have such nominals and amounts:') do |bills|
     amount_from_response = parsed_body.select { |item| item['nominal'] == nominal.to_i }.first['amount']
     expect(amount_from_response).to eq(amount.to_i)
   end
+end
+
+When('I set JSON request body to:') do |request_body|
+  @request_body = request_body
+end
+
+When(/^I send a (PUT|POST) request to "(.*?)"$/) do |method, local_path|
+  page.driver.browser.send(method.downcase, local_path, JSON.parse(@request_body).as_json)
+end
+
+Then('the JSON response should be ok') do
+  expect(page.body).to eq('{"status":"Ok"}')
+end
+
+Then('the JSON response should contain an error') do
+  expect(page.body).to eq('{"error":"bills[nominal] does not have a valid value"}')
 end

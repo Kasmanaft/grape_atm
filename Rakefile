@@ -2,6 +2,7 @@ require 'rspec/core/rake_task'
 
 require_relative 'config/application.rb'
 
+# Monkey patching for db:migrate / db:rollback
 task :rails_env do
 end
 
@@ -20,7 +21,7 @@ module Rails
 
   def self.config
     require 'erb'
-    db_config = YAML.safe_load(ERB.new(File.read('config/database.yml')).result)
+    db_config = YAML.safe_load(File.read('config/database.yml'))
     Struct.new(:database_configuration) do
       def paths
         { 'db' => ['db'] }
