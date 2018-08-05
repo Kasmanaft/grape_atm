@@ -13,8 +13,8 @@
 
 # Instructions
 
-You can then visit the api at the following endpoints (GET request)
-http://localhost:9292/atm - **get ATM state**, will return JSON like:
+You can **get ATM state** at the following endpoint (GET request)
+http://localhost:9292/atm, will return JSON like:
 
     [
      {"nominal": 1, "amount": 2},
