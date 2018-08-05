@@ -13,15 +13,15 @@
 
 # Instructions
 
-- You can then visit the api at the following endpoints (GET request)
-http://localhost:9292/atm - get ATM state, will return JSON like:
+You can then visit the api at the following endpoints (GET request)
+http://localhost:9292/atm - **get ATM state**, will return JSON like:
 
     [
      {"nominal": 1, "amount": 2},
      {"nominal": 2, "amount": 12}
     ]
 
-- You can withdraw from ATM with POST request "http://localhost:9292/atm" with
+You can **withdraw from ATM** with POST request "http://localhost:9292/atm" with
 JSON body like this:
 
     {"amount": 234}
@@ -39,7 +39,7 @@ Otherwise, it will return error like this one:
 
     { "error": "not enough money to satisfy your request" }
 
-- You can reload ATN with PUT request "http://localhost:9292/atm" with
+You can **reload ATM** with PUT request "http://localhost:9292/atm" with
 JSON body like this:
 
     {"bills" :[
