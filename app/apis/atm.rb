@@ -29,7 +29,7 @@ class Atm < Grape::API
     end
     post '/' do
       result = Bill.withdraw params[:amount]
-      status 400 unless result.is_a?(Array) # Error will be returned in hash
+      status 400 unless result.is_a?(Array) # Error will be returned in a hash
       result
     end
   end
